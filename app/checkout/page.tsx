@@ -78,8 +78,8 @@ export default function CheckoutPage() {
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center p-4">
         <div className="bg-gray-50 p-12 rounded-[3rem] text-center max-w-md w-full border border-gray-100 shadow-xl">
-          <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <ShoppingBag className="w-10 h-10 text-orange-500" />
+          <div className="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6">
+            <ShoppingBag className="w-10 h-10 text-[#ff4d4d]" />
           </div>
           <h1 className="text-2xl font-black text-[#333E48] mb-4">{t.cart.empty}</h1>
           <Link 
@@ -106,18 +106,18 @@ export default function CheckoutPage() {
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-5xl mx-auto px-4 h-20 flex items-center justify-center relative">
           <div className="flex items-center gap-4 text-sm font-bold text-gray-400">
-            <div className={`flex items-center gap-2 ${step >= 1 ? 'text-orange-500' : ''}`}>
-              <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] border-2 ${step >= 1 ? 'border-orange-500 bg-orange-50' : 'border-gray-200'}`}>1</span>
+            <div className={`flex items-center gap-2 ${step >= 1 ? 'text-[#ff4d4d]' : ''}`}>
+              <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] border-2 ${step >= 1 ? 'border-[#ff4d4d] bg-red-50' : 'border-gray-200'}`}>1</span>
               {t.checkout.shippingAddress}
             </div>
             <ChevronRight className="w-4 h-4" />
-            <div className={`flex items-center gap-2 ${step >= 2 ? 'text-orange-500' : ''}`}>
-              <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] border-2 ${step >= 2 ? 'border-orange-500 bg-orange-50' : 'border-gray-200'}`}>2</span>
+            <div className={`flex items-center gap-2 ${step >= 2 ? 'text-[#ff4d4d]' : ''}`}>
+              <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] border-2 ${step >= 2 ? 'border-[#ff4d4d] bg-red-50' : 'border-gray-200'}`}>2</span>
               {t.checkout.paymentMethod}
             </div>
             <ChevronRight className="w-4 h-4" />
-            <div className={`flex items-center gap-2 ${step >= 3 ? 'text-orange-500' : ''}`}>
-              <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] border-2 ${step >= 3 ? 'border-orange-500 bg-orange-50' : 'border-gray-200'}`}>3</span>
+            <div className={`flex items-center gap-2 ${step >= 3 ? 'text-[#ff4d4d]' : ''}`}>
+              <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] border-2 ${step >= 3 ? 'border-[#ff4d4d] bg-red-50' : 'border-gray-200'}`}>3</span>
               {t.checkout.orderSummary}
             </div>
           </div>
@@ -146,8 +146,8 @@ export default function CheckoutPage() {
               </div>
               <h1 className="text-4xl font-black text-[#333E48] mb-4">{t.checkout.thankYou}</h1>
               <p className="text-lg text-gray-500 font-medium mb-2">{t.checkout.orderSuccess}</p>
-              <div className="bg-orange-50 p-6 rounded-2xl border border-orange-100 mb-8 inline-block max-w-sm">
-                <p className="text-orange-700 text-sm font-bold leading-relaxed">
+              <div className="bg-red-50 p-6 rounded-2xl border border-red-100 mb-8 inline-block max-w-sm">
+                <p className="text-red-700 text-sm font-bold leading-relaxed">
                    {t.checkout.confirmationCall}
                 </p>
               </div>
@@ -172,8 +172,8 @@ export default function CheckoutPage() {
                     className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100"
                   >
                     <div className="flex items-center gap-3 mb-8">
-                      <div className="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center">
-                        <MapPin className="w-5 h-5 text-orange-500" />
+                      <div className="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center">
+                        <MapPin className="w-5 h-5 text-[#ff4d4d]" />
                       </div>
                       <h2 className="text-xl font-black text-[#333E48]">{t.checkout.shippingAddress}</h2>
                     </div>
@@ -189,7 +189,7 @@ export default function CheckoutPage() {
                               value={formData.fullName}
                               onChange={(e) => setFormData({...formData, fullName: e.target.value})}
                               placeholder="John Doe"
-                              className={`w-full pl-11 pr-4 py-3.5 bg-gray-50 border ${errors.fullName ? 'border-red-500' : 'border-gray-100'} rounded-xl focus:bg-white focus:border-orange-500 outline-none transition-all text-sm font-medium`}
+                              className={`w-full pl-11 pr-4 py-3.5 bg-gray-50 border ${errors.fullName ? 'border-red-500' : 'border-gray-100'} rounded-xl focus:bg-white focus:border-[#ff4d4d] outline-none transition-all text-sm font-medium`}
                             />
                           </div>
                         </div>
@@ -202,7 +202,7 @@ export default function CheckoutPage() {
                               value={formData.phone}
                               onChange={(e) => setFormData({...formData, phone: e.target.value})}
                               placeholder="+994 -- --- -- --"
-                              className={`w-full pl-11 pr-4 py-3.5 bg-gray-50 border ${errors.phone ? 'border-red-500' : 'border-gray-100'} rounded-xl focus:bg-white focus:border-orange-500 outline-none transition-all text-sm font-medium`}
+                              className={`w-full pl-11 pr-4 py-3.5 bg-gray-50 border ${errors.phone ? 'border-red-500' : 'border-gray-100'} rounded-xl focus:bg-white focus:border-[#ff4d4d] outline-none transition-all text-sm font-medium`}
                             />
                             {errors.phone && <p className="text-[10px] text-red-500 font-bold mt-1 ml-1">{errors.phone}</p>}
                           </div>
@@ -218,7 +218,7 @@ export default function CheckoutPage() {
                             value={formData.email}
                             onChange={(e) => setFormData({...formData, email: e.target.value})}
                             placeholder="email@example.com"
-                            className="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-100 rounded-xl focus:bg-white focus:border-orange-500 outline-none transition-all text-sm font-medium"
+                            className="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-100 rounded-xl focus:bg-white focus:border-[#ff4d4d] outline-none transition-all text-sm font-medium"
                           />
                         </div>
                       </div>
@@ -232,7 +232,7 @@ export default function CheckoutPage() {
                             value={formData.address}
                             onChange={(e) => setFormData({...formData, address: e.target.value})}
                             placeholder="Street, Building, Apartment"
-                            className={`w-full pl-11 pr-4 py-3.5 bg-gray-50 border ${errors.address ? 'border-red-500' : 'border-gray-100'} rounded-xl focus:bg-white focus:border-orange-500 outline-none transition-all text-sm font-medium`}
+                            className={`w-full pl-11 pr-4 py-3.5 bg-gray-50 border ${errors.address ? 'border-red-500' : 'border-gray-100'} rounded-xl focus:bg-white focus:border-[#ff4d4d] outline-none transition-all text-sm font-medium`}
                           />
                         </div>
                       </div>
@@ -245,7 +245,7 @@ export default function CheckoutPage() {
                             value={formData.city}
                             onChange={(e) => setFormData({...formData, city: e.target.value})}
                             placeholder="Baku"
-                            className={`w-full px-4 py-3.5 bg-gray-50 border ${errors.city ? 'border-red-500' : 'border-gray-100'} rounded-xl focus:bg-white focus:border-orange-500 outline-none transition-all text-sm font-medium`}
+                            className={`w-full px-4 py-3.5 bg-gray-50 border ${errors.city ? 'border-red-500' : 'border-gray-100'} rounded-xl focus:bg-white focus:border-[#ff4d4d] outline-none transition-all text-sm font-medium`}
                           />
                         </div>
                         <div className="space-y-1.5">
@@ -255,7 +255,7 @@ export default function CheckoutPage() {
                             value={formData.postalCode}
                             onChange={(e) => setFormData({...formData, postalCode: e.target.value})}
                             placeholder="AZ1000"
-                            className="w-full px-4 py-3.5 bg-gray-50 border border-gray-100 rounded-xl focus:bg-white focus:border-orange-500 outline-none transition-all text-sm font-medium"
+                            className="w-full px-4 py-3.5 bg-gray-50 border border-gray-100 rounded-xl focus:bg-white focus:border-[#ff4d4d] outline-none transition-all text-sm font-medium"
                           />
                         </div>
                       </div>
@@ -277,17 +277,17 @@ export default function CheckoutPage() {
                     className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100"
                   >
                     <div className="flex items-center gap-3 mb-8">
-                      <div className="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center">
-                        <CreditCard className="w-5 h-5 text-orange-500" />
+                      <div className="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center">
+                        <CreditCard className="w-5 h-5 text-[#ff4d4d]" />
                       </div>
                       <h2 className="text-xl font-black text-[#333E48]">{t.checkout.paymentMethod}</h2>
                     </div>
 
-                    <div className="p-6 rounded-[2rem] border-2 border-orange-500 bg-orange-50/50 relative overflow-hidden group">
+                    <div className="p-6 rounded-[2rem] border-2 border-[#ff4d4d] bg-red-50/50 relative overflow-hidden group">
                        <div className="relative z-10">
                           <div className="flex items-center justify-between mb-4">
                             <span className="text-lg font-black text-[#333E48]">{t.checkout.payOnDelivery}</span>
-                            <div className="w-6 h-6 rounded-full bg-orange-500 flex items-center justify-center shadow-lg shadow-orange-500/30">
+                            <div className="w-6 h-6 rounded-full bg-[#ff4d4d] flex items-center justify-center shadow-lg shadow-[#ff4d4d]/30">
                               <div className="w-2.5 h-2.5 rounded-full bg-white" />
                             </div>
                           </div>
@@ -295,7 +295,7 @@ export default function CheckoutPage() {
                             {t.checkout.payOnDeliverySub}
                           </p>
                        </div>
-                       <Truck className="absolute -right-6 -bottom-6 w-32 h-32 text-orange-500/5 group-hover:scale-110 transition-transform duration-500" />
+                       <Truck className="absolute -right-6 -bottom-6 w-32 h-32 text-[#ff4d4d]/5 group-hover:scale-110 transition-transform duration-500" />
                     </div>
 
                     <button 
@@ -320,8 +320,8 @@ export default function CheckoutPage() {
                     className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100"
                   >
                     <div className="flex items-center gap-3 mb-8">
-                       <div className="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center">
-                          <ShieldCheck className="w-5 h-5 text-orange-500" />
+                       <div className="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center">
+                          <ShieldCheck className="w-5 h-5 text-[#ff4d4d]" />
                        </div>
                        <h2 className="text-xl font-black text-[#333E48]">{t.checkout.orderSummary}</h2>
                     </div>
@@ -335,7 +335,7 @@ export default function CheckoutPage() {
                             <p className="text-sm text-gray-500 font-medium">{formData.address}, {formData.city}</p>
                             <p className="text-sm text-gray-500 font-medium">{formData.phone}</p>
                           </div>
-                          <button onClick={() => setStep(1)} className="text-orange-500 text-xs font-black uppercase hover:underline">Edit</button>
+                          <button onClick={() => setStep(1)} className="text-[#ff4d4d] text-xs font-black uppercase hover:underline">Edit</button>
                         </div>
                         <div className="h-px bg-gray-200" />
                         <div className="flex justify-between items-start">
@@ -343,7 +343,7 @@ export default function CheckoutPage() {
                             <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">{t.checkout.paymentMethod}</p>
                             <p className="text-sm font-bold text-[#333E48]">{t.checkout.payOnDelivery}</p>
                           </div>
-                          <button onClick={() => setStep(2)} className="text-orange-500 text-xs font-black uppercase hover:underline">Edit</button>
+                          <button onClick={() => setStep(2)} className="text-[#ff4d4d] text-xs font-black uppercase hover:underline">Edit</button>
                         </div>
                       </div>
 
@@ -369,7 +369,7 @@ export default function CheckoutPage() {
                          </div>
                          <div className="flex items-center justify-between mb-8">
                             <span className="text-lg font-black">{locale === 'en' ? 'Total to Pay' : 'Cəmi ödəniləcək'}</span>
-                            <span className="text-3xl font-black text-orange-500">₼{cartTotal.toFixed(2)}</span>
+                            <span className="text-3xl font-black text-[#ff4d4d]">₼{cartTotal.toFixed(2)}</span>
                          </div>
 
                          {cartTotal > COD_LIMIT && (
@@ -384,7 +384,7 @@ export default function CheckoutPage() {
                          <button 
                           disabled={isProcessing || cartTotal > COD_LIMIT}
                           onClick={handlePlaceOrder}
-                          className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-gray-600 disabled:opacity-50 text-white font-black py-5 rounded-[1.25rem] transition-all shadow-[0_20px_40px_-10px_rgba(249,115,22,0.4)] active:scale-[0.98] flex items-center justify-center gap-3 text-lg"
+                          className="w-full bg-[#ff4d4d] hover:bg-[#e64444] disabled:bg-gray-600 disabled:opacity-50 text-white font-black py-5 rounded-[1.25rem] transition-all shadow-[0_20px_40px_-10px_rgba(255,77,77,0.4)] active:scale-[0.98] flex items-center justify-center gap-3 text-lg"
                          >
                           {isProcessing ? (
                             <>

@@ -16,7 +16,7 @@ export function PromoBanners() {
             alt="Camera Deal"
             className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-40 group-hover:scale-105 transition-all duration-500"
           />
-          <div className="absolute top-4 right-4 bg-orange-500 text-white text-sm font-black px-3 py-1.5 rounded-full shadow-lg">
+          <div className="absolute top-4 right-4 bg-[#ff4d4d] text-white text-sm font-black px-3 py-1.5 rounded-full shadow-lg">
             {t.promo.sale1Badge}
           </div>
           <div className="relative p-6 flex flex-col justify-between h-full min-h-[220px]">
@@ -24,7 +24,7 @@ export function PromoBanners() {
               <h3 className="text-white text-xl font-black mb-1">{t.promo.sale1Title}</h3>
               <p className="text-gray-300 text-sm">{t.promo.sale1Sub}</p>
             </div>
-            <div className="flex items-center gap-2 text-orange-400 hover:text-orange-300 font-semibold text-sm transition-colors mt-4 group/btn">
+            <div className="flex items-center gap-2 text-[#ff4d4d] hover:text-[#e64444] font-semibold text-sm transition-colors mt-4 group/btn">
               {t.hero.shopNow}
               <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
             </div>

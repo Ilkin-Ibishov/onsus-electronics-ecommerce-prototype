@@ -43,7 +43,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
         <div className="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col gap-2 translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 z-10">
           <button
             onClick={() => toggleWishlist(product)}
-            className={`w-9 h-9 rounded-full flex items-center justify-center shadow-lg backdrop-blur-md transition-all ${isInWishlist(product.id)
+            className={`w-10 h-10 rounded-full flex items-center justify-center shadow-lg backdrop-blur-md transition-all ${isInWishlist(product.id)
                 ? 'bg-[#ff4d4d] text-white shadow-[#ff4d4d]/30'
                 : 'bg-white/90 text-gray-600 hover:bg-[#ff4d4d] hover:text-white'
               }`}
@@ -52,13 +52,13 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
           </button>
           <button
             onClick={() => onQuickView?.(product)}
-            className="w-9 h-9 rounded-full bg-white/90 text-gray-600 flex items-center justify-center shadow-lg backdrop-blur-md hover:bg-[#ff4d4d] hover:text-white transition-all"
+            className="w-10 h-10 rounded-full bg-white/90 text-gray-600 flex items-center justify-center shadow-lg backdrop-blur-md hover:bg-[#ff4d4d] hover:text-white transition-all"
           >
             <Eye className="w-4 h-4" />
           </button>
           <button
             onClick={() => toggleCompare(product)}
-            className={`w-9 h-9 rounded-full flex items-center justify-center shadow-lg backdrop-blur-md transition-all ${isInCompare(product.id)
+            className={`w-10 h-10 rounded-full flex items-center justify-center shadow-lg backdrop-blur-md transition-all ${isInCompare(product.id)
                 ? 'bg-indigo-600 text-white shadow-indigo-600/30'
                 : 'bg-white/90 text-gray-600 hover:bg-indigo-600 hover:text-white'
               }`}

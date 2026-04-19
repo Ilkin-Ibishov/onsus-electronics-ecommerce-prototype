@@ -39,7 +39,7 @@ export function MainHeader({ onCartOpen, onWishlistOpen, onAuthOpen, onMobileMen
           <Link href="/" className="flex-shrink-0 group">
             <div className="relative w-[72px] h-[72px] transition-transform group-hover:rotate-12 group-hover:scale-110">
               <Image
-                src="/logo.svg"
+                src="/onsus-electronics-ecommerce-prototype/logo.svg"
                 alt="Ilk Electronics Logo"
                 fill
                 className="object-contain"
@@ -77,7 +77,7 @@ export function MainHeader({ onCartOpen, onWishlistOpen, onAuthOpen, onMobileMen
                 )}
               </AnimatePresence>
               <button className="bg-[#1A2229] hover:bg-[#ff4d4d] text-white px-6 py-3 transition-colors font-bold text-sm tracking-wider">
-                SEARCH
+                {t.header.searchBtn}
               </button>
             </div>
 
@@ -90,7 +90,7 @@ export function MainHeader({ onCartOpen, onWishlistOpen, onAuthOpen, onMobileMen
                   exit={{ opacity: 0, y: 10 }}
                   className="absolute top-full left-0 right-0 bg-white border border-gray-100 rounded-[1.5rem] shadow-2xl mt-2 p-5 z-50 border-t-4 border-t-[#ff4d4d]"
                 >
-                  <p className="text-[10px] text-gray-400 mb-3 font-black uppercase tracking-widest">Trending Now</p>
+                  <p className="text-[10px] text-gray-400 mb-3 font-black uppercase tracking-widest">{t.header.trendingNow}</p>
                   <div className="flex flex-wrap gap-2">
                     {popularSearches.map(term => (
                       <button

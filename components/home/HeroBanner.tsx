@@ -21,7 +21,7 @@ export function HeroBanner() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(255,77,77,0.1),transparent)]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-8 lg:px-16 py-16 lg:py-24 flex flex-col lg:flex-row items-center gap-12 z-20">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-16 py-12 lg:py-24 flex flex-col lg:flex-row items-center gap-12 z-20">
         <motion.div
           className="flex-1 text-center lg:text-left"
           initial={{ opacity: 0, x: -30 }}
@@ -32,7 +32,7 @@ export function HeroBanner() {
             {t.hero.badge}
           </span>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] mb-8 tracking-tight">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] mb-8 tracking-tight">
             {t.hero.title}
           </h1>
 

@@ -5,6 +5,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  basePath: '/onsus-electronics-ecommerce-prototype',
   images: { unoptimized: true },
 };
 

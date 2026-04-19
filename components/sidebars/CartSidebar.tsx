@@ -30,7 +30,7 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
             <ShoppingCart className="w-5 h-5" />
             <h2 className="font-bold text-base">{t.cart.title}</h2>
             {cartItems.length > 0 && (
-              <span className="bg-orange-500 text-white text-xs font-black w-5 h-5 rounded-full flex items-center justify-center">
+              <span className="bg-[#ff4d4d] text-white text-xs font-black w-5 h-5 rounded-full flex items-center justify-center">
                 {cartItems.reduce((s, i) => s + i.quantity, 0)}
               </span>
             )}
@@ -47,7 +47,7 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
               <p className="text-gray-500 font-medium">{t.cart.empty}</p>
               <button
                 onClick={onClose}
-                className="mt-4 text-orange-500 hover:text-orange-600 font-semibold text-sm transition-colors"
+                className="mt-4 text-[#ff4d4d] hover:text-[#e64444] font-semibold text-sm transition-colors"
               >
                 {t.cart.continueShopping}
               </button>
@@ -77,7 +77,7 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                           <Plus className="w-3 h-3" />
                         </button>
                       </div>
-                      <span className="text-sm font-black text-orange-500">
+                      <span className="text-sm font-black text-[#ff4d4d]">
                         ₼{(item.product.price * item.quantity).toFixed(2)}
                       </span>
                     </div>
@@ -103,7 +103,7 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
             <Link 
               href="/checkout" 
               onClick={onClose}
-              className="w-full flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-xl transition-all hover:shadow-lg active:scale-95"
+              className="w-full flex items-center justify-center gap-2 bg-[#ff4d4d] hover:bg-[#e64444] text-white font-bold py-3.5 rounded-xl transition-all hover:shadow-lg active:scale-95"
             >
               {t.cart.checkout}
               <ArrowRight className="w-4 h-4" />

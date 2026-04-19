@@ -32,7 +32,7 @@ export function ProductGrid({ featured, topRated, onSale, onQuickView }: Product
     <section className="max-w-7xl mx-auto px-4 py-10">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div className="flex items-center gap-3">
-          <div className="w-1 h-8 bg-orange-500 rounded-full" />
+          <div className="w-1.5 h-8 bg-[#ff4d4d] rounded-full shadow-lg shadow-[#ff4d4d]/20" />
           <h2 className="text-2xl font-black text-[#333E48]">{t.products.title}</h2>
         </div>
 
@@ -42,7 +42,7 @@ export function ProductGrid({ featured, topRated, onSale, onQuickView }: Product
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
               className={`px-4 py-2 rounded-md text-sm font-semibold transition-all ${activeTab === tab.key
-                  ? 'bg-white text-orange-500 shadow-sm'
+                  ? 'bg-white text-[#ff4d4d] shadow-sm'
                   : 'text-gray-600 hover:text-gray-800'
                 }`}
             >

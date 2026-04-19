@@ -77,11 +77,11 @@ export function TrendingCategories({
         <div className="flex items-end justify-between mb-12">
           <div>
             <h2 className="text-3xl lg:text-4xl font-black text-[#333E48] tracking-tight mb-3">
-              {(t as any).trendingCategories?.title || 'Trending Categories'}
+              {t.trendingCategories.title}
             </h2>
             <div className="w-20 h-1.5 bg-[#ff4d4d] rounded-full mb-4" />
             <p className="text-gray-400 text-sm font-bold uppercase tracking-[0.1em]">
-              {(t as any).trendingCategories?.subtitle || 'Discover what\'s hot right now'}
+              {t.trendingCategories.subtitle}
             </p>
           </div>
           
@@ -136,11 +136,11 @@ export function TrendingCategories({
                       <div className="absolute inset-0 rounded-full bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                     
-                    <h3 className="text-sm font-black text-[#333E48] group-hover:text-[#ff4d4d] transition-colors uppercase tracking-tight line-clamp-1 px-2">
+                    <h3 className="text-sm font-black text-[#333E48] group-hover:text-[#ff4d4d] transition-colors uppercase tracking-tight line-clamp-2 px-2 min-h-[2.5rem] flex items-center justify-center">
                       {getLocalizedName(cat)}
                     </h3>
                     <p className="text-[10px] font-bold text-gray-400 mt-1 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
-                      {(t as any).trendingCategories?.explore || 'Explore'}
+                      {t.trendingCategories.explore}
                     </p>
                   </Link>
                 </motion.div>

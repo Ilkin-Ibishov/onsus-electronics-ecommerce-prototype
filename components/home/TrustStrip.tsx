@@ -7,7 +7,7 @@ export function TrustStrip() {
   const { t } = useLanguage();
 
   const items = [
-    { icon: Truck, title: t.trust.delivery, sub: t.trust.deliverySub, color: 'text-orange-500' },
+    { icon: Truck, title: t.trust.delivery, sub: t.trust.deliverySub, color: 'text-[#ff4d4d]' },
     { icon: Headphones, title: t.trust.support, sub: t.trust.supportSub, color: 'text-blue-500' },
     { icon: CreditCard, title: t.trust.payment, sub: t.trust.paymentSub, color: 'text-green-500' },
     { icon: Shield, title: t.trust.reliable, sub: t.trust.reliableSub, color: 'text-purple-500' },

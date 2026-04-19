@@ -38,8 +38,8 @@ export function Footer() {
             <ul className="space-y-2.5">
               {helpLinks.map(link => (
                 <li key={link}>
-                  <a href="#" className="text-sm hover:text-orange-400 transition-colors flex items-center gap-1.5 group">
-                    <ArrowRight className="w-3 h-3 text-orange-500/50 group-hover:text-orange-400 transition-colors" />
+                  <a href="#" className="text-sm hover:text-[#ff4d4d] transition-colors flex items-center gap-1.5 group">
+                    <ArrowRight className="w-3 h-3 text-[#ff4d4d]/50 group-hover:text-[#ff4d4d] transition-colors" />
                     {link}
                   </a>
                 </li>
@@ -54,8 +54,8 @@ export function Footer() {
             <ul className="space-y-2.5">
               {categoryLinks.map(link => (
                 <li key={link}>
-                  <a href="#" className="text-sm hover:text-orange-400 transition-colors flex items-center gap-1.5 group">
-                    <ArrowRight className="w-3 h-3 text-orange-500/50 group-hover:text-orange-400 transition-colors" />
+                  <a href="#" className="text-sm hover:text-[#ff4d4d] transition-colors flex items-center gap-1.5 group">
+                    <ArrowRight className="w-3 h-3 text-[#ff4d4d]/50 group-hover:text-[#ff4d4d] transition-colors" />
                     {link}
                   </a>
                 </li>
@@ -70,8 +70,8 @@ export function Footer() {
             <ul className="space-y-2.5">
               {careLinks.map(link => (
                 <li key={link}>
-                  <a href="#" className="text-sm hover:text-orange-400 transition-colors flex items-center gap-1.5 group">
-                    <ArrowRight className="w-3 h-3 text-orange-500/50 group-hover:text-orange-400 transition-colors" />
+                  <a href="#" className="text-sm hover:text-[#ff4d4d] transition-colors flex items-center gap-1.5 group">
+                    <ArrowRight className="w-3 h-3 text-[#ff4d4d]/50 group-hover:text-[#ff4d4d] transition-colors" />
                     {link}
                   </a>
                 </li>
@@ -85,31 +85,31 @@ export function Footer() {
             </h4>
             <ul className="space-y-3 mb-6">
               <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+                <MapPin className="w-4 h-4 text-[#ff4d4d] mt-0.5 flex-shrink-0" />
                 <span className="text-sm">{t.footer.address}</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-orange-400 flex-shrink-0" />
-                <a href={`tel:${t.footer.phone}`} className="text-sm hover:text-orange-400 transition-colors">{t.footer.phone}</a>
+                <Phone className="w-4 h-4 text-[#ff4d4d] flex-shrink-0" />
+                <a href={`tel:${t.footer.phone}`} className="text-sm hover:text-[#ff4d4d] transition-colors">{t.footer.phone}</a>
               </li>
               <li className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-orange-400 flex-shrink-0" />
-                <a href={`mailto:${t.footer.email}`} className="text-sm hover:text-orange-400 transition-colors">{t.footer.email}</a>
+                <Mail className="w-4 h-4 text-[#ff4d4d] flex-shrink-0" />
+                <a href={`mailto:${t.footer.email}`} className="text-sm hover:text-[#ff4d4d] transition-colors">{t.footer.email}</a>
               </li>
             </ul>
 
             <div>
               <h5 className="text-white font-semibold text-sm mb-1">{t.footer.newsletter}</h5>
-              <p className="text-xs text-orange-400 mb-3">{t.footer.newsletterSub}</p>
+              <p className="text-xs text-[#ff4d4d] mb-3">{t.footer.newsletterSub}</p>
               <div className="flex">
                 <input
                   type="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder={t.footer.newsletterPlaceholder}
-                  className="flex-1 bg-white/10 text-white placeholder-gray-500 text-sm px-3 py-2.5 rounded-l-lg outline-none border border-white/10 focus:border-orange-500 transition-colors"
+                  className="flex-1 bg-white/10 text-white placeholder-gray-500 text-sm px-3 py-2.5 rounded-l-lg outline-none border border-white/10 focus:border-[#ff4d4d] transition-colors"
                 />
-                <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm px-4 py-2.5 rounded-r-lg transition-colors">
+                <button className="bg-[#ff4d4d] hover:bg-[#e64444] text-white font-semibold text-sm px-4 py-2.5 rounded-r-lg transition-colors">
                   {t.footer.subscribe}
                 </button>
               </div>
@@ -121,7 +121,7 @@ export function Footer() {
           <div className="flex items-center gap-3">
             <div className="relative w-[51px] h-[51px]">
               <Image
-                src="/logo.svg"
+                src="/onsus-electronics-ecommerce-prototype/logo.svg"
                 alt="Ilk Electronics Logo"
                 fill
                 className="object-contain"

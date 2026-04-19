@@ -28,7 +28,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
             <div className="flex items-center gap-2">
               <div className="relative w-[51px] h-[51px]">
                 <Image
-                  src="/logo.svg"
+                  src="/onsus-electronics-ecommerce-prototype/logo.svg"
                   alt="Ilk Electronics Logo"
                   fill
                   className="object-contain"
@@ -63,7 +63,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               <input
                 type="text"
                 placeholder="Full Name"
-                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-sm outline-none focus:border-orange-500 transition-colors"
+                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-sm outline-none focus:border-[#ff4d4d] transition-colors"
               />
             </div>
           )}
@@ -75,7 +75,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               value={email}
               onChange={e => setEmail(e.target.value)}
               placeholder={t.auth.email}
-              className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-sm outline-none focus:border-orange-500 transition-colors"
+              className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-sm outline-none focus:border-[#ff4d4d] transition-colors"
             />
           </div>
 
@@ -86,7 +86,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               value={password}
               onChange={e => setPassword(e.target.value)}
               placeholder={t.auth.password}
-              className="w-full pl-10 pr-10 py-3 border border-gray-200 rounded-xl text-sm outline-none focus:border-orange-500 transition-colors"
+              className="w-full pl-10 pr-10 py-3 border border-gray-200 rounded-xl text-sm outline-none focus:border-[#ff4d4d] transition-colors"
             />
             <button
               type="button"
@@ -99,13 +99,13 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
 
           {mode === 'signin' && (
             <div className="text-right">
-              <button className="text-xs text-orange-500 hover:text-orange-600 font-semibold transition-colors">
+              <button className="text-xs text-[#ff4d4d] hover:text-[#e64444] font-semibold transition-colors">
                 {t.auth.forgotPassword}
               </button>
             </div>
           )}
 
-          <button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-xl transition-all hover:shadow-lg active:scale-95">
+          <button className="w-full bg-[#ff4d4d] hover:bg-[#e64444] text-white font-bold py-3.5 rounded-xl transition-all hover:shadow-lg active:scale-95">
             {mode === 'signin' ? t.auth.loginBtn : t.auth.registerBtn}
           </button>
 
@@ -136,7 +136,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
             {mode === 'signin' ? t.auth.noAccount : t.auth.hasAccount}{' '}
             <button
               onClick={() => setMode(mode === 'signin' ? 'signup' : 'signin')}
-              className="text-orange-500 font-semibold hover:text-orange-600 transition-colors"
+              className="text-[#ff4d4d] font-semibold hover:text-[#e64444] transition-colors"
             >
               {mode === 'signin' ? t.auth.signUp : t.auth.signIn}
             </button>

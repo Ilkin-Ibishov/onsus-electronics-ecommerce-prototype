@@ -10,13 +10,13 @@ interface LanguageContextType {
 }
 
 const LanguageContext = createContext<LanguageContextType>({
-  locale: 'en',
+  locale: 'az',
   setLocale: () => {},
-  t: translations.en,
+  t: translations.az,
 });
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>('en');
+  const [locale, setLocaleState] = useState<Locale>('az');
 
   useEffect(() => {
     const saved = localStorage.getItem('onsus-locale') as Locale | null;

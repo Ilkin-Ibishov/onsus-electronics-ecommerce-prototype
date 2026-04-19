@@ -39,7 +39,7 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
         <div className="flex flex-col sm:flex-row overflow-y-auto">
           <div className="sm:w-1/2 bg-gray-50 flex items-center justify-center p-8 relative min-h-[250px]">
             {product.discount_percent > 0 && (
-              <div className="absolute top-4 left-4 bg-orange-500 text-white text-sm font-black px-3 py-1.5 rounded-full">
+              <div className="absolute top-4 left-4 bg-[#ff4d4d] text-white text-sm font-black px-3 py-1.5 rounded-full">
                 -{product.discount_percent}%
               </div>
             )}
@@ -60,7 +60,7 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
               </div>
               <h2 className="text-xl font-black text-[#333E48] leading-tight mb-3">{getName()}</h2>
               <div className="flex items-center gap-3 mb-2">
-                <span className="text-2xl font-black text-orange-500">₼{product.price.toFixed(2)}</span>
+                <span className="text-2xl font-black text-[#ff4d4d]">₼{product.price.toFixed(2)}</span>
                 {product.original_price && (
                   <span className="text-gray-400 line-through">₼{product.original_price.toFixed(2)}</span>
                 )}
@@ -106,7 +106,7 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
             <div className="flex flex-col gap-2">
               <button
                 onClick={() => { addToCart(product); onClose(); }}
-                className="flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-xl transition-all hover:shadow-lg active:scale-95"
+                className="flex items-center justify-center gap-2 bg-[#ff4d4d] hover:bg-[#e64444] text-white font-bold py-3 rounded-xl transition-all hover:shadow-lg active:scale-95"
               >
                 <ShoppingCart className="w-5 h-5" />
                 {t.quickView.addToCart}
@@ -115,10 +115,10 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
                 <button
                   onClick={() => toggleWishlist(product)}
                   className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border-2 font-semibold text-sm transition-all ${
-                    isInWishlist(product.id) ? 'border-orange-500 bg-orange-50 text-orange-600' : 'border-gray-200 text-gray-600 hover:border-orange-300'
+                    isInWishlist(product.id) ? 'border-[#ff4d4d] bg-[#ff4d4d]/5 text-[#ff4d4d]' : 'border-gray-200 text-gray-600 hover:border-[#ff4d4d]/30'
                   }`}
                 >
-                  <Heart className={`w-4 h-4 ${isInWishlist(product.id) ? 'fill-orange-500' : ''}`} />
+                  <Heart className={`w-4 h-4 ${isInWishlist(product.id) ? 'fill-[#ff4d4d]' : ''}`} />
                   {t.quickView.addToWishlist}
                 </button>
                 <button

@@ -18,6 +18,8 @@ export const translations = {
       cart: 'Cart',
       wishlist: 'Wishlist',
       compare: 'Compare',
+      searchBtn: 'SEARCH',
+      trendingNow: 'Trending Now',
     },
     nav: {
       allDepartments: 'All Departments',
@@ -191,6 +193,11 @@ export const translations = {
       addToCart: 'Add to Cart',
       addToWishlist: 'Add to Wishlist',
     },
+    trendingCategories: {
+      title: 'Trending Categories',
+      subtitle: "Discover what's hot right now",
+      explore: 'Explore',
+    },
   },
   az: {
     topBar: {
@@ -209,6 +216,8 @@ export const translations = {
       cart: 'Səbət',
       wishlist: 'İstək siyahısı',
       compare: 'Müqayisə',
+      searchBtn: 'AXTAR',
+      trendingNow: 'İndi Populyar',
     },
     nav: {
       allDepartments: 'Bütün Şöbələr',
@@ -224,7 +233,7 @@ export const translations = {
     categories: {
       apparel: 'Geyim',
       automotive: 'Avtomobil Hissələri',
-      beauty: 'Gözəllik və Qişi Qayğısı',
+      beauty: 'Gözəllik və Kişi Qayğısı',
       electronics: 'İstehlak Elektronikası',
       furniture: 'Mebel',
       home: 'Ev Məhsulları',
@@ -382,6 +391,11 @@ export const translations = {
       addToCart: 'Səbətə əlavə et',
       addToWishlist: 'İstək siyahısına əlavə et',
     },
+    trendingCategories: {
+      title: 'Populyar Kateqoriyalar',
+      subtitle: 'Hazırda aktual olanları kəşf edin',
+      explore: 'Kəşf et',
+    },
   },
   ru: {
     topBar: {
@@ -400,6 +414,8 @@ export const translations = {
       cart: 'Корзина',
       wishlist: 'Избранное',
       compare: 'Сравнить',
+      searchBtn: 'ПОИСК',
+      trendingNow: 'Сейчас популярно',
     },
     nav: {
       allDepartments: 'Все категории',
@@ -572,6 +588,11 @@ export const translations = {
       quantity: 'Количество:',
       addToCart: 'В корзину',
       addToWishlist: 'В избранное',
+    },
+    trendingCategories: {
+      title: 'Популярные категории',
+      subtitle: 'Узнайте, что сейчас в тренде',
+      explore: 'Узнать больше',
     },
   },
 };

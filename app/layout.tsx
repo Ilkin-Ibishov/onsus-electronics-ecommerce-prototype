@@ -8,8 +8,8 @@ import { ClientLayout } from '@/components/layout/ClientLayout';
 const inter = Inter({ subsets: ['latin', 'cyrillic'] });
 
 export const metadata: Metadata = {
-  title: 'Ilk Electronics - Premium Electronics Store',
-  description: 'Shop the latest electronics, cameras, smartphones, laptops and more at unbeatable prices.',
+  title: 'Ilk Electronics - Premium Elektronika Mağazası',
+  description: 'Ən son elektronika, kameralar, smartfonlar, noutbuklar və daha çoxunu inanılmaz qiymətlərlə əldə edin.',
 };
 
 export default function RootLayout({
@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="az">
       <body className={inter.className}>
         <LanguageProvider>
           <CartProvider>

@@ -9,16 +9,19 @@ interface ProductPageProps {
 // This is required for Next.js Static Export (output: 'export')
 export async function generateStaticParams() {
   try {
-    const { data: products } = await supabase.from('products').select('id');
+    const { data: products, error } = await supabase.from('products').select('id');
     
-    if (!products) return [];
+    if (error || !products || products.length === 0) {
+      console.warn('No products found for static params, using dummy ID for build stability');
+      return [{ id: '1' }];
+    }
 
     return products.map((product) => ({
-      id: product.id,
+      id: product.id.toString(),
     }));
   } catch (error) {
     console.error('Error generating static params:', error);
-    return [];
+    return [{ id: '1' }];
   }
 }
 

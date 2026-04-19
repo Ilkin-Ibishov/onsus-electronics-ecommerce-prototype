@@ -7,9 +7,10 @@ import { getFilteredProducts, getCategories, type Product, type Category } from 
 import { ShopSidebar } from '@/components/shop/ShopSidebar';
 import { ShopFilterBar } from '@/components/shop/ShopFilterBar';
 import { ProductCard } from '@/components/home/ProductCard';
-import { Skeleton } from '@/components/ui/Skeleton'; // Assuming there's a skeleton or I'll use inline
+import { Skeleton } from '@/components/ui/skeleton';
+import { Suspense } from 'react';
 
-export default function ShopPage() {
+function ShopContent() {
   const { t, locale } = useLanguage();
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('category') || '';
@@ -118,5 +119,17 @@ export default function ShopPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ShopPage() {
+  return (
+    <Suspense fallback={
+      <div className="bg-white min-h-screen flex items-center justify-center">
+        <div className="text-gray-400 font-bold">Loading shop...</div>
+      </div>
+    }>
+      <ShopContent />
+    </Suspense>
   );
 }

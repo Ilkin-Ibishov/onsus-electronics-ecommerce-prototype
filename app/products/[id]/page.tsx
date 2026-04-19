@@ -1,7 +1,4 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import { getProductById, getFilteredProducts, type Product } from '@/lib/supabase';
+import { getProductById, getFilteredProducts, supabase, type Product } from '@/lib/supabase';
 import { notFound } from 'next/navigation';
 import ProductDetail from '@/components/product/ProductDetail';
 
@@ -9,48 +6,34 @@ interface ProductPageProps {
   params: { id: string };
 }
 
-export default function ProductPage({ params }: ProductPageProps) {
-  const [product, setProduct] = useState<Product | null>(null);
-  const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+// This is required for Next.js Static Export (output: 'export')
+export async function generateStaticParams() {
+  try {
+    const { data: products } = await supabase.from('products').select('id');
+    
+    if (!products) return [];
 
-  useEffect(() => {
-    async function loadData() {
-      try {
-        const p = await getProductById(params.id);
-        if (!p) {
-          setLoading(false);
-          return;
-        }
-        setProduct(p);
-        
-        // Fetch related products
-        const categorySlug = (p as any).categories?.slug;
-        const related = await getFilteredProducts({ 
-          category: categorySlug 
-        });
-        
-        setRelatedProducts(related.filter(item => item.id !== p.id).slice(0, 4));
-      } catch (error) {
-        console.error('Error loading product:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadData();
-  }, [params.id]);
-
-  if (loading) {
-    return (
-      <div className="min-h-[70vh] flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-orange-500/20 border-t-orange-500 rounded-full animate-spin" />
-      </div>
-    );
+    return products.map((product) => ({
+      id: product.id,
+    }));
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [];
   }
+}
+
+export default async function ProductPage({ params }: ProductPageProps) {
+  const product = await getProductById(params.id);
 
   if (!product) {
     return notFound();
   }
+
+  // Fetch related products (same category, excluding current)
+  const categorySlug = (product as any).categories?.slug;
+  const relatedProducts = await getFilteredProducts({ 
+    category: categorySlug 
+  }).then(list => list.filter(p => p.id !== product.id).slice(0, 4));
 
   return (
     <ProductDetail 

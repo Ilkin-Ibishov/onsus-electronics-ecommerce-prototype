@@ -39,7 +39,7 @@ export function MainHeader({ onCartOpen, onWishlistOpen, onAuthOpen, onMobileMen
           <Link href="/" className="flex-shrink-0 group">
             <div className="relative w-[72px] h-[72px] transition-transform group-hover:rotate-12 group-hover:scale-110">
               <Image
-                src="/logo.svg"
+                src="/onsus-electronics-ecommerce-prototype/logo.svg"
                 alt="Strike Logo"
                 fill
                 className="object-contain"

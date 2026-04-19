@@ -60,13 +60,13 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
               </div>
               <h2 className="text-xl font-black text-[#333E48] leading-tight mb-3">{getName()}</h2>
               <div className="flex items-center gap-3 mb-2">
-                <span className="text-2xl font-black text-orange-500">${product.price.toFixed(2)}</span>
+                <span className="text-2xl font-black text-orange-500">₼{product.price.toFixed(2)}</span>
                 {product.original_price && (
-                  <span className="text-gray-400 line-through">${product.original_price.toFixed(2)}</span>
+                  <span className="text-gray-400 line-through">₼{product.original_price.toFixed(2)}</span>
                 )}
                 {product.discount_percent > 0 && (
                   <span className="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full">
-                    Save ${(product.original_price! - product.price).toFixed(2)}
+                    Save ₼{(product.original_price! - product.price).toFixed(2)}
                   </span>
                 )}
               </div>

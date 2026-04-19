@@ -18,9 +18,9 @@ export function TopBar() {
       <div className="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-4 flex-wrap">
           <div className="flex items-center gap-1.5">
-            <Phone className="w-3.5 h-3.5 text-orange-400" />
+            <Phone className="w-3.5 h-3.5 text-[#ff4d4d]" />
             <span className="text-gray-300">{t.topBar.freeCall}</span>
-            <a href={`tel:${t.topBar.phone}`} className="text-orange-400 font-medium hover:text-orange-300 transition-colors">
+            <a href={`tel:${t.topBar.phone}`} className="text-[#ff4d4d] font-medium hover:text-[#ff4d4d]/80 transition-colors">
               {t.topBar.phone}
             </a>
           </div>
@@ -30,14 +30,7 @@ export function TopBar() {
 
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5">
-            {['USD', 'EUR'].map((cur, i) => (
-              <button
-                key={cur}
-                className={`text-xs transition-colors ${i === 0 ? 'text-white font-medium' : 'text-gray-400 hover:text-white'}`}
-              >
-                {cur}
-              </button>
-            ))}
+            <span className="text-white font-medium text-xs">AZN</span>
           </div>
 
           <div className="text-gray-600">|</div>
@@ -47,11 +40,10 @@ export function TopBar() {
               <button
                 key={lang.code}
                 onClick={() => setLocale(lang.code)}
-                className={`text-xs transition-colors px-1 rounded ${
-                  locale === lang.code
-                    ? 'text-orange-400 font-medium'
+                className={`text-xs transition-colors px-1 rounded ${locale === lang.code
+                    ? 'text-[#ff4d4d] font-medium'
                     : 'text-gray-400 hover:text-white'
-                }`}
+                  }`}
               >
                 {lang.label}
               </button>

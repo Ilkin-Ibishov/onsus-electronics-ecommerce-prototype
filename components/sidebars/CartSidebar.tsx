@@ -1,6 +1,7 @@
 'use client';
 
 import { X, ShoppingCart, Plus, Minus, Trash2, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 import { useCart } from '@/context/CartContext';
 import { type Locale } from '@/lib/translations';
@@ -77,7 +78,7 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                         </button>
                       </div>
                       <span className="text-sm font-black text-orange-500">
-                        ${(item.product.price * item.quantity).toFixed(2)}
+                        ₼{(item.product.price * item.quantity).toFixed(2)}
                       </span>
                     </div>
                   </div>
@@ -97,12 +98,16 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
           <div className="p-4 border-t border-gray-200 space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-gray-600 font-medium">{t.cart.subtotal}</span>
-              <span className="text-xl font-black text-[#333E48]">${cartTotal.toFixed(2)}</span>
+              <span className="text-xl font-black text-[#333E48]">₼{cartTotal.toFixed(2)}</span>
             </div>
-            <button className="w-full flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-xl transition-all hover:shadow-lg active:scale-95">
+            <Link 
+              href="/checkout" 
+              onClick={onClose}
+              className="w-full flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-xl transition-all hover:shadow-lg active:scale-95"
+            >
               {t.cart.checkout}
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
             <button onClick={onClose} className="w-full text-center text-sm text-gray-500 hover:text-gray-700 transition-colors py-1">
               {t.cart.continueShopping}
             </button>

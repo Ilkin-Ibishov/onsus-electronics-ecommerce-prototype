@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { X, Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import Image from 'next/image';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -25,10 +26,14 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
         <div className="bg-gradient-to-br from-[#1a1a2e] to-[#333E48] p-6 text-white">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <div className="w-7 h-7 bg-orange-500 rounded-md flex items-center justify-center">
-                <span className="text-white font-black text-xs">O</span>
+              <div className="relative w-[51px] h-[51px]">
+                <Image
+                  src="/logo.svg"
+                  alt="Strike Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
-              <span className="font-black text-lg">onsus</span>
             </div>
             <button onClick={onClose} className="text-white/70 hover:text-white transition-colors">
               <X className="w-5 h-5" />

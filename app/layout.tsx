@@ -3,11 +3,12 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { CartProvider } from '@/context/CartContext';
+import { ClientLayout } from '@/components/layout/ClientLayout';
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'] });
 
 export const metadata: Metadata = {
-  title: 'Onsus - Premium Electronics Store',
+  title: 'Strike - Premium Electronics Store',
   description: 'Shop the latest electronics, cameras, smartphones, laptops and more at unbeatable prices.',
 };
 
@@ -21,7 +22,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <LanguageProvider>
           <CartProvider>
-            {children}
+            <ClientLayout>
+              {children}
+            </ClientLayout>
           </CartProvider>
         </LanguageProvider>
       </body>

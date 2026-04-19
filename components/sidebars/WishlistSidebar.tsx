@@ -54,7 +54,7 @@ export function WishlistSidebar({ isOpen, onClose }: WishlistSidebarProps) {
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold text-[#333E48] line-clamp-2 leading-snug mb-2">{getName(product)}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-black text-orange-500">${product.price.toFixed(2)}</span>
+                      <span className="text-sm font-black text-orange-500">₼{product.price.toFixed(2)}</span>
                       <button
                         onClick={() => { addToCart(product); toggleWishlist(product); }}
                         className="flex items-center gap-1 text-xs font-semibold bg-[#333E48] hover:bg-orange-500 text-white px-3 py-1.5 rounded-lg transition-all"

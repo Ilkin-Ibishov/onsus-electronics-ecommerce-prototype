@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { type Product } from '@/lib/supabase';
 
 export interface CartItem {
@@ -18,6 +18,8 @@ interface CartContextType {
   updateQuantity: (productId: string, quantity: number) => void;
   toggleWishlist: (product: Product) => void;
   toggleCompare: (product: Product) => void;
+  removeFromCompare: (productId: string) => void;
+  clearCompare: () => void;
   isInWishlist: (productId: string) => boolean;
   isInCompare: (productId: string) => boolean;
   cartCount: number;
@@ -35,6 +37,8 @@ const CartContext = createContext<CartContextType>({
   updateQuantity: () => {},
   toggleWishlist: () => {},
   toggleCompare: () => {},
+  removeFromCompare: () => {},
+  clearCompare: () => {},
   isInWishlist: () => false,
   isInCompare: () => false,
   cartCount: 0,
@@ -47,6 +51,46 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [wishlistItems, setWishlistItems] = useState<Product[]>([]);
   const [compareItems, setCompareItems] = useState<Product[]>([]);
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  // Load from localStorage on mount
+  useEffect(() => {
+    const savedCart = localStorage.getItem('onsus_cart');
+    const savedWishlist = localStorage.getItem('onsus_wishlist');
+    const savedCompare = localStorage.getItem('onsus_compare');
+
+    if (savedCart) {
+      try {
+        setCartItems(JSON.parse(savedCart));
+      } catch (e) {
+        console.error('Failed to parse cart', e);
+      }
+    }
+    if (savedWishlist) {
+      try {
+        setWishlistItems(JSON.parse(savedWishlist));
+      } catch (e) {
+        console.error('Failed to parse wishlist', e);
+      }
+    }
+    if (savedCompare) {
+      try {
+        setCompareItems(JSON.parse(savedCompare));
+      } catch (e) {
+        console.error('Failed to parse compare', e);
+      }
+    }
+    setIsHydrated(true);
+  }, []);
+
+  // Save to localStorage on changes
+  useEffect(() => {
+    if (isHydrated) {
+      localStorage.setItem('onsus_cart', JSON.stringify(cartItems));
+      localStorage.setItem('onsus_wishlist', JSON.stringify(wishlistItems));
+      localStorage.setItem('onsus_compare', JSON.stringify(compareItems));
+    }
+  }, [cartItems, wishlistItems, compareItems, isHydrated]);
 
   const addToCart = (product: Product) => {
     setCartItems(prev => {
@@ -91,6 +135,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
+  const clearCompare = () => setCompareItems([]);
+
+  const removeFromCompare = (productId: string) => {
+    setCompareItems(prev => prev.filter(p => p.id !== productId));
+  };
+
   const isInWishlist = (productId: string) => wishlistItems.some(p => p.id === productId);
   const isInCompare = (productId: string) => compareItems.some(p => p.id === productId);
 
@@ -103,7 +153,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     <CartContext.Provider value={{
       cartItems, wishlistItems, compareItems,
       addToCart, removeFromCart, updateQuantity,
-      toggleWishlist, toggleCompare,
+      toggleWishlist, toggleCompare, removeFromCompare, clearCompare,
       isInWishlist, isInCompare,
       cartCount, wishlistCount, compareCount, cartTotal,
     }}>

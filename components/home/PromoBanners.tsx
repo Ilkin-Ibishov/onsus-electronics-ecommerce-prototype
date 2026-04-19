@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 
 export function PromoBanners() {
@@ -9,7 +10,7 @@ export function PromoBanners() {
   return (
     <section className="max-w-7xl mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 min-h-[220px] group cursor-pointer">
+        <Link href="/shop" className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 min-h-[220px] group cursor-pointer block">
           <img
             src="https://images.pexels.com/photos/243757/pexels-photo-243757.jpeg?auto=compress&cs=tinysrgb&w=600"
             alt="Camera Deal"
@@ -23,14 +24,14 @@ export function PromoBanners() {
               <h3 className="text-white text-xl font-black mb-1">{t.promo.sale1Title}</h3>
               <p className="text-gray-300 text-sm">{t.promo.sale1Sub}</p>
             </div>
-            <button className="flex items-center gap-2 text-orange-400 hover:text-orange-300 font-semibold text-sm transition-colors mt-4 group/btn">
+            <div className="flex items-center gap-2 text-orange-400 hover:text-orange-300 font-semibold text-sm transition-colors mt-4 group/btn">
               {t.hero.shopNow}
               <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-            </button>
+            </div>
           </div>
-        </div>
+        </Link>
 
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-900 to-slate-900 min-h-[220px] group cursor-pointer">
+        <Link href="/shop" className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-900 to-slate-900 min-h-[220px] group cursor-pointer block">
           <img
             src="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=600"
             alt="Audio Deal"
@@ -44,15 +45,15 @@ export function PromoBanners() {
               <h3 className="text-white text-xl font-black mb-1">{t.promo.sale2Title}</h3>
               <p className="text-gray-300 text-sm">{t.promo.sale2Sub}</p>
             </div>
-            <button className="flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold text-sm transition-colors mt-4 group/btn">
+            <div className="flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold text-sm transition-colors mt-4 group/btn">
               {t.hero.shopNow}
               <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-            </button>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
 
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#1a1a2e] via-slate-800 to-[#1a1a2e] min-h-[180px] group cursor-pointer">
+      <Link href="/shop" className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#1a1a2e] via-slate-800 to-[#1a1a2e] min-h-[180px] group cursor-pointer block">
         <img
           src="https://images.pexels.com/photos/3977908/pexels-photo-3977908.jpeg?auto=compress&cs=tinysrgb&w=1200"
           alt="Featured"
@@ -70,12 +71,12 @@ export function PromoBanners() {
               <span className="text-yellow-400 text-2xl font-black">{t.featured.salePrice}</span>
             </div>
           </div>
-          <button className="flex-shrink-0 flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold px-6 py-3 rounded-lg transition-all hover:shadow-lg active:scale-95">
+          <div className="flex-shrink-0 flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold px-6 py-3 rounded-lg transition-all hover:shadow-lg active:scale-95">
             {t.featured.shopNow}
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </div>
         </div>
-      </div>
+      </Link>
     </section>
   );
 }

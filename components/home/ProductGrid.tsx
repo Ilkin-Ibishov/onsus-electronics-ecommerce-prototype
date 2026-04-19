@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 import { type Product } from '@/lib/supabase';
 import { ProductCard } from './ProductCard';
@@ -40,11 +41,10 @@ export function ProductGrid({ featured, topRated, onSale, onQuickView }: Product
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
-              className={`px-4 py-2 rounded-md text-sm font-semibold transition-all ${
-                activeTab === tab.key
+              className={`px-4 py-2 rounded-md text-sm font-semibold transition-all ${activeTab === tab.key
                   ? 'bg-white text-orange-500 shadow-sm'
                   : 'text-gray-600 hover:text-gray-800'
-              }`}
+                }`}
             >
               {tab.label}
             </button>
@@ -71,10 +71,10 @@ export function ProductGrid({ featured, topRated, onSale, onQuickView }: Product
       </div>
 
       <div className="flex justify-center mt-8">
-        <button className="flex items-center gap-2 border-2 border-[#333E48] text-[#333E48] hover:bg-[#333E48] hover:text-white font-bold px-8 py-3 rounded-lg transition-all group">
+        <Link href="/shop" className="flex items-center gap-2 border-2 border-[#333E48] text-[#333E48] hover:bg-[#333E48] hover:text-white font-bold px-8 py-3 rounded-lg transition-all group">
           {t.products.viewAll}
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </button>
+        </Link>
       </div>
     </section>
   );

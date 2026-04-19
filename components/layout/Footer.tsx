@@ -3,6 +3,7 @@
 import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, MessageCircle, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
+import Image from 'next/image';
 
 export function Footer() {
   const { t } = useLanguage();
@@ -118,8 +119,13 @@ export function Footer() {
 
         <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-7 h-7 bg-orange-500 rounded-md flex items-center justify-center">
-              <span className="text-white font-black text-xs">O</span>
+            <div className="relative w-[51px] h-[51px]">
+              <Image
+                src="/logo.svg"
+                alt="Strike Logo"
+                fill
+                className="object-contain"
+              />
             </div>
             <p className="text-sm text-gray-500">{t.footer.copyright}</p>
           </div>

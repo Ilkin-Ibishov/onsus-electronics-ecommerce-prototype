@@ -121,7 +121,7 @@ export function Footer() {
           <div className="flex items-center gap-3">
             <div className="relative w-[51px] h-[51px]">
               <Image
-                src="/onsus-electronics-ecommerce-prototype/logo.svg"
+                src="/logo.svg"
                 alt="Ilk Electronics Logo"
                 fill
                 className="object-contain"

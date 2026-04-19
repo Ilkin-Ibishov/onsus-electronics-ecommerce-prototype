@@ -51,7 +51,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <Link href="/" onClick={onClose} className="flex items-center gap-2">
                 <div className="relative w-[57px] h-[57px]">
                   <Image
-                    src="/onsus-electronics-ecommerce-prototype/logo.svg"
+                    src="/logo.svg"
                     alt="Ilk Electronics Logo"
                     fill
                     className="object-contain"

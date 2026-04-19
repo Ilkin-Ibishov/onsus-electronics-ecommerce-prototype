@@ -28,7 +28,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
             <div className="flex items-center gap-2">
               <div className="relative w-[51px] h-[51px]">
                 <Image
-                  src="/onsus-electronics-ecommerce-prototype/logo.svg"
+                  src="/logo.svg"
                   alt="Ilk Electronics Logo"
                   fill
                   className="object-contain"

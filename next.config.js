@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/onsus-electronics-ecommerce-prototype',
   trailingSlash: true,
   eslint: {
     ignoreDuringBuilds: true,

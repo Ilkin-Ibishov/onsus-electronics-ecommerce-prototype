@@ -31,16 +31,16 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       {isOpen && (
         <div className="fixed inset-0 z-[300] lg:hidden">
           {/* Backdrop */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-[#333E48]/40 backdrop-blur-sm" 
-            onClick={onClose} 
+            className="absolute inset-0 bg-[#333E48]/40 backdrop-blur-sm"
+            onClick={onClose}
           />
-          
+
           {/* Menu */}
-          <motion.div 
+          <motion.div
             initial={{ x: '-100%' }}
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
@@ -52,14 +52,14 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 <div className="relative w-[57px] h-[57px]">
                   <Image
                     src="/onsus-electronics-ecommerce-prototype/logo.svg"
-                    alt="Strike Logo"
+                    alt="Ilk Electronics Logo"
                     fill
                     className="object-contain"
                   />
                 </div>
               </Link>
-              <button 
-                onClick={onClose} 
+              <button
+                onClick={onClose}
                 className="w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-[#333E48] transition-all"
               >
                 <X className="w-5 h-5" />
@@ -77,11 +77,10 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     <button
                       key={lang.code}
                       onClick={() => { setLocale(lang.code); }}
-                      className={`px-4 py-2 rounded-xl text-xs font-black transition-all uppercase tracking-wide ${
-                        locale === lang.code
+                      className={`px-4 py-2 rounded-xl text-xs font-black transition-all uppercase tracking-wide ${locale === lang.code
                           ? 'bg-[#ff4d4d] text-white shadow-lg shadow-red-500/10'
                           : 'bg-gray-50 text-gray-500 hover:bg-red-50 hover:text-[#ff4d4d]'
-                      }`}
+                        }`}
                     >
                       {lang.label}
                     </button>
@@ -96,18 +95,17 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     <div key={cat} className="group">
                       <button
                         onClick={() => setExpandedCat(expandedCat === cat ? null : cat)}
-                        className={`w-full flex items-center justify-between py-3 px-3 rounded-xl text-sm font-bold transition-all ${
-                          expandedCat === cat 
-                            ? 'bg-red-50 text-[#ff4d4d]' 
+                        className={`w-full flex items-center justify-between py-3 px-3 rounded-xl text-sm font-bold transition-all ${expandedCat === cat
+                            ? 'bg-red-50 text-[#ff4d4d]'
                             : 'text-[#333E48] hover:bg-gray-50'
-                        }`}
+                          }`}
                       >
                         <span>{t.categories[cat]}</span>
                         <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedCat === cat ? 'rotate-180' : ''}`} />
                       </button>
                       <AnimatePresence>
                         {expandedCat === cat && (
-                          <motion.div 
+                          <motion.div
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}

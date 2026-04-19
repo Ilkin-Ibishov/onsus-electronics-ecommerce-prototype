@@ -40,7 +40,7 @@ export function MainHeader({ onCartOpen, onWishlistOpen, onAuthOpen, onMobileMen
             <div className="relative w-[72px] h-[72px] transition-transform group-hover:rotate-12 group-hover:scale-110">
               <Image
                 src="/onsus-electronics-ecommerce-prototype/logo.svg"
-                alt="Strike Logo"
+                alt="Ilk Electronics Logo"
                 fill
                 className="object-contain"
                 priority

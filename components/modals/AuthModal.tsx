@@ -29,7 +29,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               <div className="relative w-[51px] h-[51px]">
                 <Image
                   src="/onsus-electronics-ecommerce-prototype/logo.svg"
-                  alt="Strike Logo"
+                  alt="Ilk Electronics Logo"
                   fill
                   className="object-contain"
                 />

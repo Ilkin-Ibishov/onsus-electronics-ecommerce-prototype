@@ -8,7 +8,7 @@ import { ClientLayout } from '@/components/layout/ClientLayout';
 const inter = Inter({ subsets: ['latin', 'cyrillic'] });
 
 export const metadata: Metadata = {
-  title: 'Strike - Premium Electronics Store',
+  title: 'Ilk Electronics - Premium Electronics Store',
   description: 'Shop the latest electronics, cameras, smartphones, laptops and more at unbeatable prices.',
 };
 

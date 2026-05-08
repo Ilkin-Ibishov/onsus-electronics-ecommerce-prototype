@@ -26,21 +26,37 @@ export async function generateStaticParams() {
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
-  const product = await getProductById(params.id);
+  let product: Product | null = null;
+  try {
+    product = await getProductById(params.id);
+  } catch (e) {
+    console.error('[product]', e);
+    return notFound();
+  }
 
   if (!product) {
     return notFound();
   }
 
-  // Fetch related products (same category, excluding current)
-  const categorySlug = (product as any).categories?.slug;
-  const relatedProducts = await getFilteredProducts({ 
-    category: categorySlug 
-  }).then(list => list.filter(p => p.id !== product.id).slice(0, 4));
+  const currentProduct = product;
+
+  let relatedProducts: Product[] = [];
+  try {
+    const categorySlug = (currentProduct as { categories?: { slug?: string } }).categories?.slug;
+    if (categorySlug) {
+      const list = await getFilteredProducts({
+        category: categorySlug
+      });
+      relatedProducts = list.filter((p) => p.id !== currentProduct.id).slice(0, 4);
+    }
+  } catch (e) {
+    console.error('[product/related]', e);
+    relatedProducts = [];
+  }
 
   return (
     <ProductDetail 
-      product={product} 
+      product={currentProduct} 
       relatedProducts={relatedProducts} 
     />
   );

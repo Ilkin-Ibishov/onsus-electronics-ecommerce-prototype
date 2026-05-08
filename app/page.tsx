@@ -28,29 +28,51 @@ export default function Home() {
   const [categories, setCategories] = useState<Category[]>([]);
 
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadData() {
       setLoading(true);
-      const [feat, top, sale, deal, cats] = await Promise.all([
-        getFeaturedProducts(),
-        getTopRatedProducts(),
-        getOnSaleProducts(),
-        getDealOfDay(),
-        getCategories(),
-      ]);
-      setFeatured(feat);
-      setTopRated(top);
-      setOnSale(sale);
-      setDealProduct(deal);
-      setCategories(cats);
-      setLoading(false);
+      setLoadError(null);
+      try {
+        const [feat, top, sale, deal, cats] = await Promise.all([
+          getFeaturedProducts(),
+          getTopRatedProducts(),
+          getOnSaleProducts(),
+          getDealOfDay(),
+          getCategories(),
+        ]);
+        setFeatured(feat);
+        setTopRated(top);
+        setOnSale(sale);
+        setDealProduct(deal);
+        setCategories(cats);
+      } catch (e) {
+        const msg = e instanceof Error ? e.message : 'Failed to load storefront data';
+        console.error('[home]', e);
+        setLoadError(msg);
+        setFeatured([]);
+        setTopRated([]);
+        setOnSale([]);
+        setDealProduct(null);
+        setCategories([]);
+      } finally {
+        setLoading(false);
+      }
     }
     loadData();
   }, []);
 
   return (
     <div className="bg-white">
+      {loadError ? (
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+            <p className="font-bold">Could not load catalog data</p>
+            <p className="mt-1 opacity-90">{loadError}</p>
+          </div>
+        </div>
+      ) : null}
       {/* Top Section: Sidebar + Hero */}
       <div className="max-w-7xl mx-auto px-4 py-8 lg:py-10">
         <div className="flex flex-col lg:flex-row gap-8 items-start">

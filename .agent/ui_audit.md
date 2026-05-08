@@ -1,3 +1,5 @@
+> Deprecated: This file is retained for historical reference. Consolidated context moved to `docs/agent-context/architecture-stack.md` and `docs/agent-context/phase-status.md`.
+
 # UI & Feature Audit: Local vs. Reference
 
 Comparison between our current local application and the reference site: [Onsus Preview](https://onsusnextjs.vercel.app/)

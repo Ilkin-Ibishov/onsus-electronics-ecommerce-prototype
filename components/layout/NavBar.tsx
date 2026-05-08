@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -19,8 +21,8 @@ const navLinks = ['home', 'shop', 'product', 'blog', 'pages'] as const;
 
 export function NavBar() {
   const { t } = useLanguage();
+  const pathname = usePathname();
   const [deptOpen, setDeptOpen] = useState(false);
-  const [activeNav, setActiveNav] = useState('home');
 
   return (
     <nav className="bg-[#333E48] text-white hidden lg:block">
@@ -49,42 +51,58 @@ export function NavBar() {
               >
                 {departmentCategories.map((cat) => (
                   <div key={cat.key} className="group relative">
-                    <button className="w-full flex items-center justify-between px-4 py-2.5 text-sm hover:bg-[#ff4d4d]/5 hover:text-[#ff4d4d] transition-colors">
+                    <Link 
+                      href={`/shop?category=${cat.key}`}
+                      className="w-full flex items-center justify-between px-4 py-2.5 text-sm hover:bg-[#ff4d4d]/5 hover:text-[#ff4d4d] transition-colors"
+                    >
                       <span>{t.categories[cat.key as keyof typeof t.categories] || cat.key}</span>
                       <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#ff4d4d]" />
-                    </button>
+                    </Link>
                     <div className="absolute left-full top-0 w-48 bg-white shadow-xl border border-gray-100 hidden group-hover:block z-50">
                       {cat.subcats.map(sub => (
-                        <button key={sub} className="w-full text-left px-4 py-2.5 text-sm hover:bg-[#ff4d4d]/5 hover:text-[#ff4d4d] transition-colors">
+                        <Link 
+                          key={sub} 
+                          href={`/shop?category=${cat.key}&subcategory=${sub.toLowerCase()}`}
+                          className="block w-full text-left px-4 py-2.5 text-sm hover:bg-[#ff4d4d]/5 hover:text-[#ff4d4d] transition-colors"
+                        >
                           {sub}
-                        </button>
+                        </Link>
                       ))}
                     </div>
                   </div>
                 ))}
                 <div className="border-t border-gray-100">
-                  <button className="w-full text-left px-4 py-2.5 text-sm font-semibold text-[#ff4d4d] hover:bg-[#ff4d4d]/5 transition-colors">
+                  <Link 
+                    href="/shop?filter=bestseller"
+                    className="block w-full text-left px-4 py-2.5 text-sm font-semibold text-[#ff4d4d] hover:bg-[#ff4d4d]/5 transition-colors"
+                  >
                     {t.categories.bestseller}
-                  </button>
+                  </Link>
                 </div>
               </div>
             )}
           </div>
 
           <div className="flex items-center flex-1">
-            {navLinks.map(link => (
-              <button
-                key={link}
-                onClick={() => setActiveNav(link)}
-                className={`px-5 py-3.5 text-sm font-medium transition-colors hover:text-[#ff4d4d] flex items-center gap-1 ${activeNav === link ? 'text-[#ff4d4d]' : 'text-gray-200'
+            {navLinks.map(link => {
+              const href = link === 'home' ? '/' : `/${link}`;
+              const isActive = pathname === href || (link === 'home' && pathname === '/');
+              
+              return (
+                <Link
+                  key={link}
+                  href={href}
+                  className={`px-5 py-3.5 text-sm font-medium transition-colors hover:text-[#ff4d4d] flex items-center gap-1 ${
+                    isActive ? 'text-[#ff4d4d]' : 'text-gray-200'
                   }`}
-              >
-                {t.nav[link]}
-                {(link === 'shop' || link === 'product' || link === 'pages') && (
-                  <ChevronDown className="w-3.5 h-3.5" />
-                )}
-              </button>
-            ))}
+                >
+                  {t.nav[link]}
+                  {(link === 'shop' || link === 'product' || link === 'pages') && (
+                    <ChevronDown className="w-3.5 h-3.5" />
+                  )}
+                </Link>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-2 text-sm text-gray-300 ml-auto pr-2">
@@ -131,18 +149,29 @@ export function DepartmentsMenu({ categories, isStatic = false }: { categories: 
             {categories?.length > 0 ? (
               categories.map((cat) => (
                 <div key={cat.id || cat.slug} className="group relative">
-                  <button className="w-full flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-gray-50 hover:text-[#ff4d4d] transition-all border-b border-gray-50 last:border-0">
+                  <Link 
+                    href={`/shop?category=${cat.slug}`}
+                    className="w-full flex items-center justify-between px-6 py-3 text-sm font-medium hover:bg-gray-50 hover:text-[#ff4d4d] transition-all border-b border-gray-50 last:border-0"
+                  >
                     <span>{getLocalizedName(cat)}</span>
                     <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#ff4d4d] transition-colors" />
-                  </button>
+                  </Link>
                   <div className="absolute left-full top-0 w-64 bg-white shadow-2xl border border-gray-100 hidden group-hover:block z-50 py-4 min-h-full">
                       <div className="px-6">
                         <h4 className="font-bold text-gray-900 mb-4">{getLocalizedName(cat)}</h4>
                         <ul className="space-y-3">
-                          <li className="text-gray-600 hover:text-[#ff4d4d] cursor-pointer text-sm">New Arrivals</li>
-                          <li className="text-gray-600 hover:text-[#ff4d4d] cursor-pointer text-sm">Best Sellers</li>
-                          <li className="text-gray-600 hover:text-[#ff4d4d] cursor-pointer text-sm">Deals & Offers</li>
-                          <li className="text-gray-600 hover:text-[#ff4d4d] cursor-pointer text-sm">Special Edition</li>
+                          <li>
+                            <Link href={`/shop?category=${cat.slug}&filter=new`} className="text-gray-600 hover:text-[#ff4d4d] cursor-pointer text-sm">New Arrivals</Link>
+                          </li>
+                          <li>
+                            <Link href={`/shop?category=${cat.slug}&filter=bestseller`} className="text-gray-600 hover:text-[#ff4d4d] cursor-pointer text-sm">Best Sellers</Link>
+                          </li>
+                          <li>
+                            <Link href={`/shop?category=${cat.slug}&filter=deals`} className="text-gray-600 hover:text-[#ff4d4d] cursor-pointer text-sm">Deals & Offers</Link>
+                          </li>
+                          <li>
+                            <Link href={`/shop?category=${cat.slug}&filter=special`} className="text-gray-600 hover:text-[#ff4d4d] cursor-pointer text-sm">Special Edition</Link>
+                          </li>
                         </ul>
                       </div>
                    </div>

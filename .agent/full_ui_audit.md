@@ -1,3 +1,5 @@
+> Deprecated: This file is retained for historical reference. Consolidated context moved to `docs/agent-context/architecture-stack.md` and `docs/agent-context/phase-status.md`.
+
 # Full UI/UX Audit: Local vs. Reference (onsusnextjs)
 
 This document outlines the problems and mismatches found during a simultaneous side-by-side review of `http://localhost:3001` and `https://onsusnextjs.vercel.app/`.

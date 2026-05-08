@@ -48,10 +48,20 @@ export function TrendingCategories({
   useEffect(() => {
     // Only fetch if categories prop is NOT provided
     if (categories === undefined) {
-      getCategories().then(data => {
-        setInternalCategories(data);
-        setInternalLoading(false);
-      });
+      setInternalLoading(true);
+      getCategories()
+        .then((data) => {
+          setInternalCategories(data);
+        })
+        .catch((e) => {
+          console.error('[TrendingCategories]', e);
+          setInternalCategories([]);
+        })
+        .finally(() => {
+          setInternalLoading(false);
+        });
+    } else {
+      setInternalLoading(false);
     }
   }, [categories]);
 
@@ -110,6 +120,10 @@ export function TrendingCategories({
             1024: { slidesPerView: 5 },
             1280: { slidesPerView: 6 },
           }}
+          preventClicks={false}
+          preventClicksPropagation={false}
+          slideToClickedSlide={false}
+          touchStartPreventDefault={false}
           className="!pt-4 !pb-12"
         >
           {finalCats.map((cat, idx) => {

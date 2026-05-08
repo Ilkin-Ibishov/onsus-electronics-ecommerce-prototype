@@ -1,9 +1,16 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, type PostgrestError } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder';
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+function assertNoSupabaseError(error: PostgrestError | null, context: string): void {
+  if (error) {
+    console.error(`[supabase:${context}]`, error.message, error.code, error.details);
+    throw new Error(`Supabase ${context}: ${error.message}`);
+  }
+}
 
 export interface Product {
   id: string;
@@ -43,49 +50,54 @@ export interface Category {
 }
 
 export async function getFeaturedProducts(): Promise<Product[]> {
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('products')
     .select('*')
     .eq('is_featured', true)
     .limit(10);
-  return data || [];
+  assertNoSupabaseError(error, 'getFeaturedProducts');
+  return data ?? [];
 }
 
 export async function getTopRatedProducts(): Promise<Product[]> {
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('products')
     .select('*')
     .eq('is_top_rated', true)
     .order('rating', { ascending: false })
     .limit(10);
-  return data || [];
+  assertNoSupabaseError(error, 'getTopRatedProducts');
+  return data ?? [];
 }
 
 export async function getOnSaleProducts(): Promise<Product[]> {
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('products')
     .select('*')
     .eq('is_on_sale', true)
     .order('discount_percent', { ascending: false })
     .limit(10);
-  return data || [];
+  assertNoSupabaseError(error, 'getOnSaleProducts');
+  return data ?? [];
 }
 
 export async function getDealOfDay(): Promise<Product | null> {
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('products')
     .select('*')
     .eq('is_deal_of_day', true)
     .maybeSingle();
+  assertNoSupabaseError(error, 'getDealOfDay');
   return data;
 }
 
 export async function getCategories(): Promise<Category[]> {
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('categories')
     .select('*')
     .order('sort_order', { ascending: true });
-  return data || [];
+  assertNoSupabaseError(error, 'getCategories');
+  return data ?? [];
 }
 
 export interface FilterOptions {
@@ -100,13 +112,13 @@ export async function getFilteredProducts(options: FilterOptions): Promise<Produ
   let query = supabase.from('products').select('*');
 
   if (options.category) {
-    // First, find the category ID by slug
-    const { data: catData } = await supabase
+    const { data: catData, error: catError } = await supabase
       .from('categories')
       .select('id')
       .eq('slug', options.category)
       .maybeSingle();
-    
+
+    assertNoSupabaseError(catError, 'getFilteredProducts(categoryLookup)');
     if (catData) {
       query = query.eq('category_id', catData.id);
     }
@@ -121,11 +133,9 @@ export async function getFilteredProducts(options: FilterOptions): Promise<Produ
   }
 
   if (options.query) {
-    // Search across EN, AZ, RU names
     query = query.or(`name_en.ilike.%${options.query}%,name_az.ilike.%${options.query}%,name_ru.ilike.%${options.query}%`);
   }
 
-  // Handle Sorting
   switch (options.sortBy) {
     case 'price-asc':
       query = query.order('price', { ascending: true });
@@ -140,33 +150,37 @@ export async function getFilteredProducts(options: FilterOptions): Promise<Produ
       query = query.order('created_at', { ascending: false });
   }
 
-  const { data } = await query;
-  return data || [];
+  const { data, error } = await query;
+  assertNoSupabaseError(error, 'getFilteredProducts');
+  return data ?? [];
 }
 
 export async function getProductById(id: string): Promise<Product | null> {
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('products')
     .select('*, categories(*)')
     .eq('id', id)
     .maybeSingle();
+  assertNoSupabaseError(error, 'getProductById');
   return data;
 }
 
 export async function getProductsByCategory(categorySlug: string, limit = 8): Promise<Product[]> {
-  const { data: category } = await supabase
+  const { data: category, error: catError } = await supabase
     .from('categories')
     .select('id')
     .eq('slug', categorySlug)
     .maybeSingle();
 
+  assertNoSupabaseError(catError, 'getProductsByCategory(categoryLookup)');
   if (!category) return [];
 
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('products')
     .select('*')
     .eq('category_id', category.id)
     .limit(limit);
-  
-  return data || [];
+
+  assertNoSupabaseError(error, 'getProductsByCategory');
+  return data ?? [];
 }

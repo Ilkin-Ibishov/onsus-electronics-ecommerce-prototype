@@ -1,3 +1,5 @@
+> Deprecated: This file is a compatibility copy. Source of truth moved to `docs/agent-context/` (see `docs/agent-context/phase-status.md`, `docs/agent-context/architecture-stack.md`, and `docs/agent-context/index.yaml`).
+
 # Technical Overview: Onsus eCommerce Clone
 
 ## Stack

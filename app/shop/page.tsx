@@ -18,6 +18,7 @@ function ShopContent() {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
   
   // Filter States
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
@@ -29,8 +30,16 @@ function ShopContent() {
 
   useEffect(() => {
     async function loadInitialData() {
-      const cats = await getCategories();
-      setCategories(cats);
+      setLoadError(null);
+      try {
+        const cats = await getCategories();
+        setCategories(cats);
+      } catch (e) {
+        const msg = e instanceof Error ? e.message : 'Failed to load categories';
+        console.error('[shop/categories]', e);
+        setLoadError(msg);
+        setCategories([]);
+      }
     }
     loadInitialData();
   }, []);
@@ -38,17 +47,26 @@ function ShopContent() {
   useEffect(() => {
     async function loadProducts() {
       setLoading(true);
-      const filtered = await getFilteredProducts({
-        category: selectedCategory,
-        minPrice: priceRange[0],
-        maxPrice: priceRange[1],
-        sortBy: sortBy
-      });
-      
-      // For prototype: we just use the filtered results and don't apply Brand/Color/Size 
-      // on the backend since schema doesn't support it, but the UI will show it.
-      setProducts(filtered);
-      setLoading(false);
+      setLoadError(null);
+      try {
+        const filtered = await getFilteredProducts({
+          category: selectedCategory,
+          minPrice: priceRange[0],
+          maxPrice: priceRange[1],
+          sortBy: sortBy
+        });
+
+        // For prototype: we just use the filtered results and don't apply Brand/Color/Size
+        // on the backend since schema doesn't support it, but the UI will show it.
+        setProducts(filtered);
+      } catch (e) {
+        const msg = e instanceof Error ? e.message : 'Failed to load products';
+        console.error('[shop/products]', e);
+        setLoadError(msg);
+        setProducts([]);
+      } finally {
+        setLoading(false);
+      }
     }
     loadProducts();
   }, [selectedCategory, priceRange, sortBy]);
@@ -62,6 +80,13 @@ function ShopContent() {
           <span>/</span>
           <span className="text-[#333E48]">{t.nav.shop}</span>
         </nav>
+
+        {loadError ? (
+          <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+            <p className="font-bold">Could not load shop data</p>
+            <p className="mt-1 opacity-90">{loadError}</p>
+          </div>
+        ) : null}
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar */}

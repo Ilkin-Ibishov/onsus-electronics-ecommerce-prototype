@@ -2,8 +2,9 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
+  // ESLint runs during `next build` unless explicitly skipped (transition escape hatch).
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: process.env.NEXT_IGNORE_ESLINT_BUILD === 'true',
   },
   images: { unoptimized: true },
 };

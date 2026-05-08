@@ -1,3 +1,5 @@
+> Deprecated: This file is retained for historical reference. Consolidated context moved to `docs/agent-context/architecture-stack.md` and `docs/agent-context/index.yaml`.
+
 # Advanced UI Libraries & Tool Explorations
 
 To achieve visual and functional parity with the reference site, the following tools and implementation patterns have been identified for Phase 4.

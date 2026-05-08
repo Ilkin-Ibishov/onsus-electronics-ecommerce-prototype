@@ -34,3 +34,77 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Non-ecommerce operational trees (keep local-only; not part of storefront product commits)
+/orchestration/
+/agency-agents/
+
+# Admin app workspace artifacts
+/apps/admin/node_modules/
+/apps/admin/.next/
+/apps/admin/out/
+
+# Supabase workspace artifacts
+/supabase/
+/supabase/migrations/
+/supabase/seed.sql
+/supabase/config.toml
+/supabase/config.toml.bak
+/supabase/config.toml.bak.2
+/supabase/config.toml.bak.3
+/supabase/config.toml.bak.4
+/supabase/config.toml.bak.5
+
+# Netlify workspace artifacts
+/netlify.toml
+/netlify/
+/netlify/functions/
+/netlify/functions/admin/
+/netlify/functions/admin/index.js
+/netlify/functions/admin/package.json
+/netlify/functions/admin/package-lock.json
+/netlify/functions/admin/package-lock.json.lock
+/netlify/functions/admin/package-lock.json.lock.lock
+/netlify/functions/admin/package-lock.json.lock.lock.lock
+
+# Orchestration workspace artifacts
+/orchestration/
+/orchestration/node_modules/
+/orchestration/.next/
+/orchestration/out/
+/orchestration/build/
+/orchestration/dist/
+/orchestration/public/
+/orchestration/src/
+/orchestration/src/app/
+/orchestration/src/components/
+/orchestration/src/lib/
+
+# Bolt
+/bolt/
+/bolt/node_modules/
+/bolt/.next/
+/bolt/out/
+/bolt/build/
+/bolt/dist/
+/bolt/public/
+/bolt/src/
+/bolt/src/app/
+/bolt/src/components/
+/bolt/src/lib/
+
+# Cursor
+.cursor/
+.cursor/rules/
+.cursor/skills/
+.cursor/skills/using-superpowers/
+.cursor/skills/using-superpowers/SKILL.md
+.cursor/skills/using-superpowers/SKILL.md.md
+.cursor/skills/using-superpowers/SKILL.md.md.md
+.cursor/skills/using-superpowers/SKILL.md.md.md.md
+.cursor/skills/using-superpowers/SKILL.md.md.md.md.md
+.cursor/skills/using-superpowers/SKILL.md.md.md.md.md.md
+.cursor/skills/using-superpowers/SKILL.md.md.md.md.md.md.md
+
+# Docs
+/docs/
